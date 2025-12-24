@@ -1,0 +1,43 @@
+<mat-card class="product-card">
+    <!-- Watchlist Button -->
+    <button mat-icon-button class="watchlist-btn" [class.active]="isInWatchlist()" (click)="onToggleWatchlist()">
+        <mat-icon>{{ isInWatchlist() ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+
+    <!-- Product Image -->
+    <div class="image-container">
+        <img [src]="product.image" [alt]="product.title" class="product-image">
+    </div>
+
+    <mat-card-content class="card-content">
+        <!-- Category Badge -->
+        <div class="category-badge">{{ product.category }}</div>
+
+        <!-- Product Title -->
+        <h3 class="product-title">{{ product.title }}</h3>
+
+        <!-- Rating -->
+        <div class="rating">
+            <mat-icon class="star-icon">star</mat-icon>
+            <span class="rating-value">{{ product.rating.rate }}</span>
+            <span class="rating-count">({{ product.rating.count }} reviews)</span>
+        </div>
+
+        <!-- Price -->
+        <div class="price-section">
+            <span class="price">{{ product.price | currency }}</span>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions">
+        <button mat-raised-button class="buy-btn" (click)="onBuy()">
+            <mat-icon>shopping_cart</mat-icon>
+            Buy Now
+        </button>
+        <button mat-stroked-button class="watchlist-action-btn" [class.added]="isInWatchlist()"
+            (click)="onToggleWatchlist()">
+            <mat-icon>{{ isInWatchlist() ? 'bookmark' : 'bookmark_border' }}</mat-icon>
+            {{ isInWatchlist() ? 'In Watchlist' : 'Watchlist' }}
+        </button>
+    </mat-card-actions>
+</mat-card>

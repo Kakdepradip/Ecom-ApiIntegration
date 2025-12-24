@@ -1,0 +1,43 @@
+<mat-toolbar class="navbar">
+  <!-- Logo Section -->
+  <div class="logo">
+    <mat-icon class="logo-icon">shopping_cart</mat-icon>
+    <span class="logo-text">ShopNow</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Search Section -->
+  <div class="search-container">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input 
+      type="text" 
+      class="search-input" 
+      placeholder="Search products..."
+      [value]="searchQuery()"
+      (input)="searchQuery.set($any($event.target).value)"
+      (keyup.enter)="onSearch()"
+    >
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Action Buttons -->
+  <div class="nav-actions">
+    <!-- Watchlist Button -->
+    <button mat-icon-button class="nav-btn" [matBadge]="watchlistCount" matBadgeColor="accent" [matBadgeHidden]="watchlistCount === 0">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <!-- Cart Button -->
+    <button mat-icon-button class="nav-btn">
+      <mat-icon>shopping_bag</mat-icon>
+    </button>
+
+    <!-- Login Button -->
+    <button mat-raised-button class="login-btn" (click)="onLogin()">
+      <mat-icon>person</mat-icon>
+      <span>Login</span>
+    </button>
+  </div>
+</mat-toolbar>
